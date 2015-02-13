@@ -1,7 +1,5 @@
 # -*- coding: cp949 -*-
 
-__author__ = 'MuzikPooh'
-
 import urllib, httplib
 from bs4 import BeautifulSoup
 
@@ -41,7 +39,5 @@ class kyoboSearch():
 
             rtn = [rtnCategory, rtnTitle, rtnLink, rtnAuthor, rtnPublisher, rtnDate, rtnPrice, rtnType]
             rtnResult.append(rtn)
-        #print rtnResult
         return rtnResult
 
-    search('거실')
