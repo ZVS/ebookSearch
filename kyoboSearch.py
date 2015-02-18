@@ -5,9 +5,9 @@ from bs4 import BeautifulSoup
 
 rtnResult = []
 
-class kyoboSearch():
+class kyoboSearch:
 
-    def search(key):
+    def search(self,key):
 
         param = urllib.urlencode({'vPejkGB':'EBK','vPreSearch':'1','vPviewCount':'1000','vPstrCategory':'DIG', 'vPplace':'top', 'vPsch':'1', 'vPstrKeyWord':key})
         headers = {"Content-type":"application/x-www-form-urlencoded"}
@@ -40,4 +40,17 @@ class kyoboSearch():
             rtn = [rtnCategory, rtnTitle, rtnLink, rtnAuthor, rtnPublisher, rtnDate, rtnPrice, rtnType]
             rtnResult.append(rtn)
         return rtnResult
+
+#main function for test purpose; welcomebaek
+
+def main():
+    print 'infiltrating to main...'
+    kyoboresult = kyoboSearch()
+    res=kyoboresult.search('justice')
+
+    for res_list in res:
+        print res_list
+
+if __name__=='__main__':
+    main()
 
