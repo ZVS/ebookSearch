@@ -5,9 +5,10 @@ from bs4 import BeautifulSoup
 
 rtnResult = []
 
-class kyoboSearch:
+class kyoboSearch():
 
-    def search(self,key):
+
+    def search(key):
 
         param = urllib.urlencode({'vPejkGB':'EBK','vPreSearch':'1','vPviewCount':'1000','vPstrCategory':'DIG', 'vPplace':'top', 'vPsch':'1', 'vPstrKeyWord':key})
         headers = {"Content-type":"application/x-www-form-urlencoded"}
@@ -21,6 +22,7 @@ class kyoboSearch:
 
         soup = BeautifulSoup(resDec)
         results = soup('ul', ['digital list-first','digital'])
+        rtnCnt = 0
 
         for result in results:
 
@@ -39,18 +41,10 @@ class kyoboSearch:
 
             rtn = [rtnCategory, rtnTitle, rtnLink, rtnAuthor, rtnPublisher, rtnDate, rtnPrice, rtnType]
             rtnResult.append(rtn)
+
+            rtnCnt += 1
+
+        rtnResult.append(rtnCnt)
         return rtnResult
 
-#main function for test purpose; welcomebaek
-
-def main():
-    print 'infiltrating to main...'
-    kyoboresult = kyoboSearch()
-    res=kyoboresult.search('justice')
-
-    for res_list in res:
-        print res_list
-
-if __name__=='__main__':
-    main()
-
+    #print search("파이썬")
